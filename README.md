@@ -1,10 +1,9 @@
 # joy-of-clojure
 
-FIXME: description
+Various snippets, experiments, and implementations I created to
+test and understand the concepts presented in the book "Joy of
+Clojure"
 
-## Installation
-
-Download from http://example.com/FIXME.
 
 ## Usage
 
