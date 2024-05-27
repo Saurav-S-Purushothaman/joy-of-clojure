@@ -20,13 +20,14 @@
 ;; There is also another way to create fibinocci series in clojure.
 ;; Using lazy sequences.
 
-;; NOTE: Whem making fixed size values, always user recur
-;; Otherwise
+;; NOTE: Whem making fixed size values, always use recur
+;; Otherwise use lazy sequence. Rule of thumb, I suppose!
 
 
 (defn lazy-seq-fibinocci
   "Genereates fibinocci series using lazy sequences"
   ([] (concat [0 1] (lazy-seq-fibinocci 0 1)))
+  ([n] (take n (lazy-seq-fibinocci)))
   ([a b]
    (lazy-seq
     (cons (+ a b) (lazy-seq-fibinocci b (+ a b))))))
