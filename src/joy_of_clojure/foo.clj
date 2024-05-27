@@ -1,6 +1,10 @@
-;; this file contains most random code.
-;; Do not read this
+(ns joy-of-clojure.foo
+  (:gen-class))
+
+;; This namespace contains most random code.
+;; Do not take this seriously
 ;; Everything written in here is stupid
+;; Author : Saurav S Purushothaman <saurav.kudajadri@gmail.com>
 
 ;; Creating fibinocci series in functional style
 
