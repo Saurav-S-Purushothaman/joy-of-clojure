@@ -33,18 +33,51 @@
     (cons (+ a b) (lazy-seq-fibinocci b (+ a b))))))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Specs starts here
+
+(s/def ::is-vector (s/coll-of number? :kind vector?))
+(s/def ::is-number number?)
+
+;; Specs ends here
+
+
 ;; binary search with tail call recursion
 (defn binary-search
-  "Binary search in clojure with tail call recursion.
-  TODO: make this only work on vector.
-        reject lists"
+  "Binary search in clojure with tail call recursion"
   [arr target]
   (loop [left 0 right (count arr)]
-    (if (>= left right)
+    (if (> left right)
       -1
-      (let [mid (/ (+ left right) 2)
+      (let [mid (quot (+ left right) 2)
             mid-val (nth arr mid)]
         (cond
           (= target mid-val) mid
           (> target mid-val) (recur (inc mid) right)
           :else (recur left (dec mid)))))))
+
+
+;; this code should fail essentially.
+
+
+(defn binary-search-type-safe
+  "Binary search in clojure but with type safety"
+  [arr target]
+  (if (and (s/valid? ::is-vector arr)
+           (s/valid? ::is-number target))
+    (loop [left 0 right (count arr)]
+      (if (> left right)
+        -1
+        (let [mid (quot (+ left right) 2)
+              mid-val (nth arr mid)]
+          (cond
+            (= target mid-val) mid
+            (> target mid-val) (recur (inc mid) right)
+            :else (recur left (dec mid))))))
+    (throw (Exception. "Input datatype mismatches. Please check"))))
+
+
+;; this code essentially fails, with the type check
+(comment
+  (def my-vec '(1 2 3 4 123 12331 123123))
+  (binary-search-type-safe my-vec 2))
