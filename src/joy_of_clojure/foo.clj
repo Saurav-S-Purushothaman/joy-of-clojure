@@ -1,4 +1,5 @@
 (ns joy-of-clojure.foo
+  (:require [clojure.spec.alpha :as s])
   (:gen-class))
 
 ;; This namespace contains most random code.
@@ -40,7 +41,7 @@
 (s/def ::is-number number?)
 
 ;; Specs ends here
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; binary search with tail call recursion
 (defn binary-search
@@ -55,9 +56,6 @@
           (= target mid-val) mid
           (> target mid-val) (recur (inc mid) right)
           :else (recur left (dec mid)))))))
-
-
-;; this code should fail essentially.
 
 
 (defn binary-search-type-safe
