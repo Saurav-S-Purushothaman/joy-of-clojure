@@ -1,3 +1,5 @@
+(ns joy-of-clojure.protocol)
+
 ;; protocols
 
 (defprotocol Concatenatable
