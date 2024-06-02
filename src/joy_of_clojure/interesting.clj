@@ -36,7 +36,7 @@
 
 ;; this is the source of the '+' operator
 ;; you can get it by running this command in the repl
-(source +)
+; (source +)
 ;; how cool is that!!!!
 
 
@@ -51,3 +51,21 @@
   ([x y] (. clojure.lang.Numbers (add x y)))
   ([x y & more]
    (reduce1 + (+ x y) more)))
+
+
+;; easiest definition of apply
+;; send a sequence of number to a function, as if they were sent as
+;; an argument
+
+(def number-sequence [1 23 23 123 21 3123 123 232 3])
+
+(apply + number-sequence)
+
+
+(def numbers [1 2 3 4 5 6 7 8 9 10])
+(apply + numbers)
+
+
+;; interesting idea of less than operator `<`
+;; monotonically increasing args
+(< 1 2 4 5 6 7 8 )
