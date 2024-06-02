@@ -1,0 +1,30 @@
+* Joy of clojure
+
+** Clojure evaluation model
+
+- REPL (read eval print loop)
+  Read -> Expand -> Compile -> Eval -> Print -> Loop:Read
+
+*** READ
+- The reader take textual representation of clojure program and then
+produces the corresponding datastructure
+- After the read phase, the clojure doesn't deal with paranthesis.
+- Clojure deals exclusively with data structure residing in memory
+- So clojure is basically mirroring the syntax of the underlying data
+  representation of the cod
+- There is only very small gap between the syntax used while coding
+  and the code that is fed to the compiler
+- Code itself is data. Language is represented as data. This concept
+  where the code itself can be manipulated as a data is called
+  *Homoiconicity*
+
+** Functional Programming
+Concerns and facilitates the application and composition of functions.\\
+
+- *Important Point to Note*
+For a language to be considered functional, its notion of function
+must be first class. That is a function can be stored, passed and
+returned just like any other piece of data.
+
+** Macros
+- Basically split the evaluation into distinct phases, and manipulate these phases
