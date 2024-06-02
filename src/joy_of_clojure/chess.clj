@@ -28,4 +28,28 @@
    \P \P \P \P \P \P \P \P
    \R \N \B \Q \K \B \N \R])
 
-;; Further implementation will be done in the future.
+;; query the squres of the chess board
+(def ^:dynamic *file-key* \a)
+(def ^:dynamic *rank-key* \0)
+
+(defn- file-component
+  [file]
+  (- (int file) (int *file-key*)))
+
+(defn- rank-component
+  [rank]
+  (->> (int *rank-key*)
+       (- (int rank))
+       (- 8)
+       (* 8)))
+
+(defn- index
+  [file rank]
+  (+ file-component file) (rank-component rank))
+
+(defn lookup
+  [board position]
+  (let [[file rank] position]
+    (board (index file rank))))
+
+(lookup (initial-board) "a1") ;; => \R
