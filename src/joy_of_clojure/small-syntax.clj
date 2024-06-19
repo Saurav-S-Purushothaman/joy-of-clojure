@@ -8,8 +8,8 @@
 ;; but `for` returns lazy-sequence and `doseq` is for generatting
 ;; side effects. Also doseq returns nil.
 
-(for [x [:a :b], y (range 5) :when (odd? y)]
-  [x y])
+(def (for [x [:a :b], y (range 5) :when (odd? y)]
+  [x y]))
 
 ;; => ([:a 1] [:a 3] [:b 1] [:b 3])
 
