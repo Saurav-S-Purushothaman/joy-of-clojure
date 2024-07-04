@@ -11,4 +11,16 @@
   (with-open [w (clojure.java.io/output-stream filename)]
     (.write w byte-array)))
 
+
+(defn byte-array-to-image [byte-array]
+  (try
+    (with-open [input-stream (java.io.ByteArrayInputStream. byte-array)]
+      (javax.imageio.ImageIO/read input-stream))
+    (catch Exception e
+      (println "Error converting byte array to image:" (.getMessage e)))))
+
+(def test (byte-array-to-image data))
+
+
+
 (save-image data "image.png")
