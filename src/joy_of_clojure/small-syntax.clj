@@ -32,3 +32,9 @@
 
 
 (date-difference "2024-06-25" "2024-02-19")
+
+;; slurp json
+(defn read-chatroom-data
+  [file-path]
+  (with-open [reader (clojure.java.io/reader file-path)]
+    (json/read reader)))
